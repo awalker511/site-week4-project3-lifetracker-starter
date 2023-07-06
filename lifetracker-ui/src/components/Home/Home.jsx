@@ -6,20 +6,23 @@ const Home = () => {
     <div className="home">
       <div className="heading-container">
         <div className="title-stack">
-          <h1>LifeTracker</h1>
+          <h1 className="app-title">LifeTracker</h1>
           <h2>Take back control.</h2>
-        </div>
-        <div className="heading-img">
-          <img
-            src="https://images.pexels.com/photos/267391/pexels-photo-267391.jpeg?cs=srgb&dl=pexels-pixabay-267391.jpg&fm=jpg"
-            alt=""
-          ></img>
+
+          <div className="heading-img">
+            <img
+              src="https://images.pexels.com/photos/267391/pexels-photo-267391.jpeg?cs=srgb&dl=pexels-pixabay-267391.jpg&fm=jpg"
+              alt=""
+            ></img>
+          </div>
         </div>
       </div>
       <div className="option-tiles">
         <div className="tile-card">
           <h3 className="card-title">Fitness</h3>
-          <img src="https://static.standard.co.uk/2022/09/20/10/Fitness.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart"></img>
+          <a href="/fitness">
+            <img src="https://static.standard.co.uk/2022/09/20/10/Fitness.jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart"></img>
+          </a>
         </div>
 
         <div className="tile-card">

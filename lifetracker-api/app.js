@@ -10,7 +10,7 @@ app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 
 app.get("/", function (req, res) {
   return res.status(200).json({

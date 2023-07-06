@@ -4,3 +4,41 @@
   width: 100%;
   gap: 20px;
 }
+.title-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+}
+.tile-card img {
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+}
+.tile-card img:hover {
+  transition: 15ms;
+  transform: scale(1.15);
+}
+.card-title {
+  color: orange;
+}
+.app-title {
+  font-size: 60px;
+}
+.option-tiles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.heading-img img {
+  width: 40%;
+  border-radius: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home {
+  flex-wrap: wrap;
+  margin: auto;
+}
