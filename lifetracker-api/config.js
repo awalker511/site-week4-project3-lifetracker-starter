@@ -2,6 +2,7 @@ require("dotenv").config();
 require("colors");
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3001;
+const SECRET_KEY = process.env.SECRET_KEY.SECRET_KEY || "secret-dev";
 function getDataBaseUri() {
   const dbUser = process.env.DATABASE_USER || "postgres";
   const dbPass = process.env.DATABASE_PASS
@@ -19,4 +20,5 @@ function getDataBaseUri() {
 module.exports = {
   PORT,
   getDataBaseUri,
+  SECRET_KEY,
 };

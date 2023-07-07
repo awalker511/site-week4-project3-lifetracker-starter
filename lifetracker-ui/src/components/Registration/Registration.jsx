@@ -2,6 +2,7 @@ import React from "react";
 import "./Registration.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Registration = ({}) => {
   const [errors, setErrors] = useState({});
@@ -204,11 +205,7 @@ const Registration = ({}) => {
           required
         />
         <br></br>
-        <button
-          className="submit-button"
-          type="submit"
-          onClick={handleOnSubmit}
-        >
+        <button className="submit-button" type="submit">
           Create Account
         </button>
       </form>

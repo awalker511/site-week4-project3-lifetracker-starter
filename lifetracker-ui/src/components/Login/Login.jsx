@@ -1,13 +1,15 @@
 import React from "react";
 import "./Login.css";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setAppState }) => {
   const [errors, setErrors] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
-
+  const navigate = useNavigate();
   //onchange for login
   const onLoginChange = (e) => {
     if (e.target.name === "email") {
@@ -28,13 +30,14 @@ const Login = ({ setAppState }) => {
 
     try {
       const res = await axios.post(
-        `http://localhost:3001/auth/login`,
+        "http://localhost:3001/auth/login",
         loginForm
       );
       if (res?.data) {
         setAppState(res.data);
         setIsLoading(false);
         navigate("/activity");
+        localStorage.setItem("token", res.data.token);
       } else {
         setErrors((e) => ({
           ...e,
@@ -75,9 +78,7 @@ const Login = ({ setAppState }) => {
           onChange={onLoginChange}
           required
         />
-        <button type="submit" onClick={handleSubmit}>
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
       <div className="footer">
         <p>

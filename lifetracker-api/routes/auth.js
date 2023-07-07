@@ -28,12 +28,10 @@ router.post("/login", async (req, res) => {
   try {
     const user = await User.login(req.body);
     //Generate and sign JWT token, store secret-key in .env
-    const token = jwt.sign({ userId: user.id }, "secret-key-unique", {
-      expiresIn: "1h",
-    });
+
     res.status(200).json({
       message: "Login Successful",
-      token: token,
+      token: user.token,
       user: {
         id: user.id,
         email: user.email,

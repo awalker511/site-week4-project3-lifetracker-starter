@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NutritionForm.css";
 
 const NutritionForm = ({}) => {
-  const handleNutritionForm = (e) => {};
+  const [errors, setErrors] = useState({});
+  const [nutritionForm, setNutritionForm] = useState({
+    foodname: "",
+    category: "",
+    quantity: "",
+    calories: "",
+    pictureUrl: "",
+  });
+  const postNutritionForm = (e) => {};
 
-  const handleNutritionChange = (e) => {};
+  const handleNutritionChange = (e) => {
+    if (!e.target.name) {
+      setErrors((e) => ({ ...e, nutritionForm: "Field is empty" }));
+    }
+    setNutritionForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  };
+
   return (
     <div className="nutrition-form">
       <h1>Record Nutrition</h1>
-      <form onSubmit={handleNutritionForm}>
+      <form onSubmit={postNutritionForm}>
         <input
           type="text"
-          name="foodName"
-          value={foodName}
+          name="foodname"
+          value={nutritionForm.foodname}
           placeholder="Food name"
-          //onChange={e}
+          onChange={handleNutritionChange}
         ></input>
         <br></br>
 
         <label>Category</label>
-        <select name="category" placeholder="Select a category">
+        <select name="category">
+          <option>Select a category</option>
           <option>Snack</option>
           <option>Beverage</option>
           <option>Food</option>
@@ -32,7 +47,7 @@ const NutritionForm = ({}) => {
           name="quantity"
           min={0}
           max={100}
-          //onChange={e}
+          onChange={handleNutritionChange}
         ></input>
         <label>Calories</label>
         <input
@@ -47,8 +62,12 @@ const NutritionForm = ({}) => {
         <input
           type="text"
           name="pictureUrl"
+          value={nutritionForm.pictureUrl}
           placeholder="url for picture"
+          onChange={handleNutritionChange}
         ></input>
+
+        <button type="submit">Save</button>
       </form>
     </div>
   );

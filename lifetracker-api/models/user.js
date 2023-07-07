@@ -1,8 +1,13 @@
 "use strict";
 
-const { BadRequestError, UnauthorizedError } = require("../utils/errors");
+const {
+  BadRequestError,
+  UnauthorizedError,
+  NotFoundError,
+} = require("../utils/errors");
 const pool = require("../db/pool");
 const bcrypt = require("bcrypt");
+const { createUserJwt } = require("../utils/tokens");
 // const { validateFields } = require("../utils/validate");
 
 const { BCRYPT_WORK_FACTOR } = require("../config");
@@ -17,6 +22,7 @@ class User {
       email: user.email,
       username: user.username,
       password: user.password,
+      token: user.token,
     };
   }
 
@@ -43,6 +49,7 @@ class User {
       }
     });
     const user = await User.fetchUserByEmail(credentials.email);
+    console.log(user);
     if (user) {
       const isPasswordValid = await bcrypt.compare(
         credentials.password,
@@ -51,14 +58,12 @@ class User {
       if (!isPasswordValid) {
         throw new UnauthorizedError({ message: "Invalid Password" });
       } else {
-        return User.createPublicUser(user);
+        let token = createUserJwt(user);
+        user.token = token;
+        return User.createPublicUser(user), { token };
       }
-    }
-    const getUserQuery = `SELECT * FROM users WHERE email= $1`;
-    const result = await pool.query(getUserQuery, [credentials.email]);
-
-    if (!user) {
-      return "User not found!";
+    } else if (!user) {
+      throw new NotFoundError("User not found");
     }
 
     //Generate and sign JWT token, store secret-key in .env
@@ -114,6 +119,7 @@ class User {
     const query = `SELECT * FROM users WHERE email= $1`;
     const result = await pool.query(query, [email.toLowerCase()]);
     const user = result.rows[0];
+    return user;
   }
 }
 module.exports = User;
