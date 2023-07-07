@@ -291,11 +291,11 @@ Update the `App` component to manage authentication state:
 
 - [ ] Build the **`NutritionForm`** component to:
   - [x] Render JSX that is wrapped by an element with the class name of `nutrition-form`
-  - [ ] Render an input element for the following fields:
-    - [ ] `name` - name of the nutrition item (defaults to an empty string)
-    - [ ] `calories` - number of calories in the nutrition item (defaults to 1)
-    - [ ] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
-    - [ ] `category` - the category that this nutrition item belongs to, like fruit, meat, soda, snack, nuts, etc. (defaults to an empty string)
+  - [x] Render an input element for the following fields:
+    - [x] `name` - name of the nutrition item (defaults to an empty string)
+    - [x] `calories` - number of calories in the nutrition item (defaults to 1)
+    - [x] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
+    - [x] `category` - the category that this nutrition item belongs to, like fruit, meat, soda, snack, nuts, etc. (defaults to an empty string)
   - [ ] Each `input` element in the form should have a class name of `form-input` and should have the following props set:
     - [ ] `name` - the `name` of the `input` field being rendered (`name`, `calories`, `imageUrl`, `category`)
     - [ ] `type` - the type of the `input` element (`text`, `email`, `number`, etc.)
