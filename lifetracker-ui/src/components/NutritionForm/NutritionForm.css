@@ -1,0 +1,61 @@
+h1,
+h3,
+option,
+label {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.nutrition-input {
+  font-size: larger;
+  width: 100%;
+  border-radius: 5px;
+  border-width: 0.5px;
+}
+select {
+  font-size: medium;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+}
+.nutrition-form {
+  width: 25%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  margin: 0 auto;
+  border: none;
+  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
+  border-radius: 5px;
+}
+.nutrition-form label {
+  font-size: large;
+}
+.number-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.input-container {
+  flex-grow: 1;
+  margin: 8px;
+}
+.nutrition {
+  align-items: center;
+}
+.save-button {
+  font-size: larger;
+  background-color: #ffdd00;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+.page-title {
+  text-align: center;
+  font-size: xxx-large;
+  background-color: #ffc400;
+  margin: auto;
+  padding: 50px;
+  color: white;
+  font-weight: bold;
+  -webkit-text-stroke: #e2a026;
+}

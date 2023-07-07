@@ -6,7 +6,7 @@
 }
 .title-stack {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   justify-self: center;
 }
@@ -16,14 +16,25 @@
   border-radius: 10px;
 }
 .tile-card img:hover {
-  transition: 15ms;
+  transition: all 0.2s ease-in-out;
   transform: scale(1.15);
 }
 .card-title {
   color: orange;
 }
-.app-title {
+.app-title h1 {
   font-size: 60px;
+  font-weight: bold;
+  color: orange;
+}
+.app-title {
+  display: flex;
+  flex-direction: column;
+  margin-left: 200px;
+  margin-top: 100px;
+}
+.subtitle {
+  margin-top: 0px;
 }
 .option-tiles {
   display: flex;
@@ -32,12 +43,13 @@
 }
 .heading-img img {
   width: 40%;
-  border-radius: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 20px;
+  margin: 150px;
 }
-
+.heading-img {
+  display: flex;
+  justify-content: flex-end;
+}
 .home {
   flex-wrap: wrap;
   margin: auto;

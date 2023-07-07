@@ -6,7 +6,6 @@ import ActivityPage from "../ActivityPage/ActivityPage";
 const RegistrationPage = ({ setAppState, appState }) => {
   return (
     <div className="registration-page">
-      {/* <ActivityPage /> */}
       <Registration setAppState={setAppState} appState={appState} />
     </div>
   );

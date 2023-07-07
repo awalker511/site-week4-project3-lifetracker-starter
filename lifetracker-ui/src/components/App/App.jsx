@@ -10,13 +10,14 @@ import ActivityPage from "../ActivityPage/ActivityPage";
 import LoginPage from "../LoginPage/LoginPage";
 import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import NutritionPage from "../NutritionPage/NutritionPage";
+import NutritionForm from "../NutritionForm/NutritionForm";
 
 function App() {
   //logout function
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setLoggedIn(false);
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   setLoggedIn(false);
+  // };
   //token authentication
   useEffect(() => {
     const checkLoggedIn = () => {
@@ -60,6 +61,7 @@ function App() {
           />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/nutrition" element={<NutritionPage />} />
+          <Route path="/nutrition/create" element={<NutritionForm />} />
         </Routes>
       </BrowserRouter>
     </div>

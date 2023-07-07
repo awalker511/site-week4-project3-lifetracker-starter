@@ -1,0 +1,36 @@
+.login {
+  font-weight: bold;
+  color: orange;
+  text-align: center;
+}
+.login a {
+  text-decoration: none;
+}
+.login-input {
+  font-size: larger;
+  border-width: 0.5px;
+}
+.login-form {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  width: 30%;
+  border: solid orange 5px;
+  border-radius: 5px;
+  padding: 20px;
+}
+.login-form button {
+  background-color: orange;
+  font-weight: bold;
+  font-size: larger;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.login-form button:hover {
+  background-color: #ad7000;
+}
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+}

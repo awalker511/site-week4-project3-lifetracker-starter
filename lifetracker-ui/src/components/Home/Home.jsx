@@ -6,8 +6,10 @@ const Home = () => {
     <div className="home">
       <div className="heading-container">
         <div className="title-stack">
-          <h1 className="app-title">LifeTracker</h1>
-          <h2>Take back control.</h2>
+          <div className="app-title">
+            <h1>LifeTracker</h1>
+            <h2 className="subtitle">Take back control of your life.</h2>
+          </div>
 
           <div className="heading-img">
             <img

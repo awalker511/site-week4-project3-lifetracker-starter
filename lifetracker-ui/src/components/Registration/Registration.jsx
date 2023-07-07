@@ -146,7 +146,7 @@ const Registration = ({}) => {
 
   return (
     <div className="register">
-      <h1>Create an Account</h1>
+      <h1 className="create-acct">Create an Account</h1>
       <form className="register-form" onSubmit={handleOnSubmit}>
         <input
           type="email"
@@ -206,7 +206,7 @@ const Registration = ({}) => {
         />
         <br></br>
         <button className="submit-button" type="submit">
-          Create Account
+          Sign Up
         </button>
       </form>
     </div>

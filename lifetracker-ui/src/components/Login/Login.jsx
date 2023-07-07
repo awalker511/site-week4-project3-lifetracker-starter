@@ -57,32 +57,36 @@ const Login = ({ setAppState }) => {
   };
   return (
     <div className="login-form-container">
-      <h2>Login</h2>
+      <h1 className="login">Welcome</h1>
       {Boolean(errors.loginForm) && (
         <p className="error-message">{errors.loginForm}</p>
       )}
-      <form onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <label>Email</label>
         <input
+          className="login-input"
           type="email"
           name="email"
           value={loginForm.email}
           onChange={onLoginChange}
           required
         />
+        <br></br>
         <label>Password</label>
         <input
+          className="login-input"
           type="password"
           name="password"
           value={loginForm.password}
           onChange={onLoginChange}
           required
         />
+        <br></br>
         <button type="submit">Login</button>
       </form>
       <div className="footer">
-        <p>
-          Don't have an account? Sign up <a href="/register">here</a>
+        <p className="login">
+          New to us? <a href="/register">Sign Up</a>
         </p>
       </div>
     </div>

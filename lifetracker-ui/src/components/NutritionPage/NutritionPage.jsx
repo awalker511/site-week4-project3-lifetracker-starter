@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NutritionPage.css";
 import NutritionForm from "../NutritionForm/NutritionForm";
-
-const NutritionPage = ({ appState, setAppState }) => {
+import { Link, useNavigate } from "react-router-dom";
+const NutritionPage = ({ appState, setAppState, loggedIn }) => {
+  const [createNew, setCreateNew] = useState(false);
+  const handleButtonClick = () => {
+    setCreateNew(true);
+  };
   return (
     <div className="nutrition-page">
       <h1 className="page-title">Nutrition</h1>
-      <NutritionForm />
+      <Link to="/nutrition/create">
+        <button className="new-nutrition-button" onClick={handleButtonClick}>
+          Record Nutrition
+        </button>
+        {createNew && <NutritionForm />}
+      </Link>
     </div>
   );
 };

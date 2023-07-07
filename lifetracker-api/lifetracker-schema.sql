@@ -13,13 +13,10 @@ CREATE TABLE nutrition (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     category TEXT NOT NULL,
+    quantity TEXT NOT NULL,
     calories TEXT NOT NULL,
     image_url TEXT,
-    user_id TEXT NOT NULL,
-    created_at TIMESTAMP NOT NULL
+    user_email TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    FOREIGN KEY (user_email) REFERENCES users(email)
 );
-
-CREATE TABLE sleep {
-    id SERIAL PRIMARY KEY,
-    
-}

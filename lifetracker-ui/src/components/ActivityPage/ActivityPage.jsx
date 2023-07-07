@@ -5,7 +5,11 @@ import { useState } from "react";
 const ActivityPage = ({ loggedIn }) => {
   return (
     <div className="activity-page">
-      (loggedIn ? : <h1>Log in to see your data.</h1>)
+      {loggedIn ? (
+        <div className="activity-feed"></div>
+      ) : (
+        <h1>Log in to see your data.</h1>
+      )}
     </div>
   );
 };

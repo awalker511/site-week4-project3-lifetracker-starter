@@ -2,22 +2,29 @@ import React from "react";
 import "./Navbar.css";
 import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import LoginPage from "../LoginPage/LoginPage";
+//import { Link } from "react-router-dom";
 
 import {
   BrowserRouter,
+  Link,
   Router,
   Routes,
   Route,
   useParams,
 } from "react-router-dom";
-const Navbar = () => {
-  const handleLogin = () => {
-    return <Link path="/login" element={<LoginPage />} />;
+const Navbar = ({ loggedIn, setLoggedIn }) => {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location("/");
+    setLoggedIn(false);
   };
+  // const handleLogin = () => {
+  //   return <Link path="/login" element={<LoginPage />} />;
+  // };
 
-  const handleRegistration = () => {
-    return <Link path="/register" element={<RegistrationPage />} />;
-  };
+  // const handleRegistration = () => {
+  //   return <Link path="/register" element={<RegistrationPage />} />;
+  // };
   return (
     <div className="navbar">
       <ul className="navbar-options">
@@ -47,19 +54,21 @@ const Navbar = () => {
           </a>
         </li>
       </ul>
-      <div className="navbar-buttons">
-        <a href="/login">
-          <button className="login-button" onClick={handleLogin}>
-            Login
-          </button>
-        </a>
+      {loggedIn ? (
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      ) : (
+        <div className="navbar-buttons">
+          <a href="/login">
+            <button className="login-button">Login</button>
+          </a>
 
-        <a href="/register">
-          <button className="register-button" onClick={handleRegistration}>
-            Sign Up
-          </button>
-        </a>
-      </div>
+          <a href="/register">
+            <button className="register-button">SignUp</button>
+          </a>
+        </div>
+      )}
     </div>
   );
 };

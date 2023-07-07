@@ -17,3 +17,27 @@
 .NutritionPage .button button {
   flex: 1;
 }
+.nutrition-page .page-title {
+  text-align: center;
+  font-size: xxx-large;
+  background-color: #ffc400;
+  margin: auto;
+  padding: 50px;
+  color: white;
+  font-weight: bold;
+}
+.new-nutrition-button {
+  background-color: #b9c7e8;
+  color: black;
+  font-size: larger;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+.new-nutrition-button:hover {
+  background-color: #818ba2;
+}
+.nutrition-page {
+  text-align: center;
+}
