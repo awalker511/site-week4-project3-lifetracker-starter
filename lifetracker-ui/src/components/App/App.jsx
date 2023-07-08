@@ -18,9 +18,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [appState, setAppState] = useState({
     user: "",
-    nutrition: "",
-    sleep: "",
-    exercise: "",
+    nutrition: [],
   });
   const [errors, setErrors] = useState("");
 
@@ -66,7 +64,9 @@ function App() {
           <Route path="/register" element={<RegistrationPage />} />
           <Route
             path="/nutrition"
-            element={<NutritionPage appState={appState} />}
+            element={
+              <NutritionPage appState={appState} setAppState={setAppState} />
+            }
           />
           <Route path="/nutrition/create" element={<NutritionForm />} />
         </Routes>

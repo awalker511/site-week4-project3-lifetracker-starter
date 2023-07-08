@@ -20,6 +20,7 @@ const NutritionPage = ({
     setCreateNew(true);
     navigate("/nutrition/create");
   };
+  //fetching user nutrition data from db
   useEffect(() => {
     const fetchNutritionData = async (user_email) => {
       try {
@@ -34,13 +35,17 @@ const NutritionPage = ({
           headers: headers,
         });
         console.log("fetchNutData", response.data);
-        // setNutritionData(response.data);
+        //setNutritionData(response.data);
+        setAppState({
+          ...appState,
+          nutrition: response.data.nutritions,
+        });
+        // console.log("APPSTATE", appState);
       } catch (error) {
         console.error(error);
       }
-      return nutritionData;
     };
-    fetchNutritionData(appState.user);
+    fetchNutritionData(appState.user.user_email);
   }, []);
 
   return (
@@ -48,13 +53,13 @@ const NutritionPage = ({
       {localStorage.getItem("token") ? (
         <div>
           <h1 className="page-title">Nutrition</h1>
-          {/* <Link to="/nutrition/create"> */}
           <button className="new-nutrition-button" onClick={handleButtonClick}>
             Record Nutrition
           </button>
-          {createNew && <NutritionForm />}
-          {/* </Link> */}
-          <NutritionCard />
+          {appState.nutrition?.map((foodItem, key) => {
+            console.log("e23");
+            return <NutritionCard {...foodItem} key={foodItem.id} />;
+          })}
         </div>
       ) : (
         <h1>Log in to view your data.</h1>
