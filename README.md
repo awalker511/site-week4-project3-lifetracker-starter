@@ -358,13 +358,13 @@ Update the `App` component to manage authentication state:
 
 Here are the pieces of functionality that should be built out for the backend:
 
-- [ ] **Project setup**
-  - [ ] First things first, bootstrap the Express application with some essential files and starter code
+- [x] **Project setup**
+  - [x] First things first, bootstrap the Express application with some essential files and starter code
   - [x] Create a `.gitignore` file, an `app.js` file, an `app.test.js` file, and a `server.js` file
-  - [ ] Make sure `node_modules` are added to the `.gitignore` file.
+  - [x] Make sure `node_modules` are added to the `.gitignore` file.
   - [x] Add dependencies for `express@next`, `morgan`, `cors`, and `nodemon`
   - [x] Install new dependencies for `bcrypt`, `jsonwebtoken`, `colors`, `dotenv`, `pg`
-  - [ ] Commit all work to `git`
+  - [x] Commit all work to `git`
   - [x] Add a `.env` file to the root of the repo and include the following environment variables
     - [x] `PORT` (default to `3001`)
     - [x] `SECRET_KEY` (set to a long random string)
@@ -390,12 +390,12 @@ Here are the pieces of functionality that should be built out for the backend:
         - [ ] When `IS_TESTING` is `true`, the `getDatabaseUri` function should use the test database
         - [ ] Otherwise, it should combine the proper database environment variables into a database connection string if no `process.env.DATABASE_URL` environment variable exists
   - [x] Add a `config.js` file
-    - [ ] Use the `dotenv` package to parse the environment variables from the `.env` file.
-    - [ ] Export each of the environment variables from the `config.js` file until the tests pass
-    - [ ] Write a `getDatabaseUri` function so that all the tests pass
-  - [ ] Commit all work to `git`
-  - [ ] The project should now be ready to go!
-- [ ] **PostgreSQL database**
+    - [x] Use the `dotenv` package to parse the environment variables from the `.env` file.
+    - [x] Export each of the environment variables from the `config.js` file until the tests pass
+    - [x] Write a `getDatabaseUri` function so that all the tests pass
+  - [x] Commit all work to `git`
+  - [x] The project should now be ready to go!
+- [x] **PostgreSQL database**
   - Time bring in a PostgreSQL database client as the application's persistence layer
   - Make sure the PostgreSQL server is running
   - Create two files at the root of the project:
@@ -420,12 +420,12 @@ Here are the pieces of functionality that should be built out for the backend:
           - [x] `created_at`
         - [ ] **Any other tables** that the application might depend on
     - [x] `lifetracker.sql`
-      - [ ] This script should:
+      - [x] This script should:
         - [ ] 1. Let the user know that they're about to delete the `lifetracker` database and prompt them to confirm that is what they want.
         - [ ] 2. Drop the `lifetracker` database and then create a new `lifetracker` database, before connecting to the `lifetracker` database.
         - [ ] 3. It should then run the `lifetracker-schema.sql` file.
         - [ ] Follow the exact same steps for `1`, `2`, and `3`, but with the `lifetracker_test` database.
-  - [ ] Setup the database by running `psql -f lifetracker.sql`
+  - [x] Setup the database by running `psql -f lifetracker.sql`
   - [ ] Create a new file at the root of the project called `db.js`. In that file:
     - [ ] Import the `getDatabaseUri` function from the `config.js` file.
     - [ ] Initialize a new PostgreSQL client with the `pg` package and connect to PostgreSQL using any necessary config variables.
@@ -433,7 +433,7 @@ Here are the pieces of functionality that should be built out for the backend:
     - [ ] Export the connected database client
   - [ ] Commit all work to `git`
   - [ ] A database client is now ready to be used!
-- [ ] **Server**
+- [x] **Server**
   - [ ] Build out a bare-bones Express server with a health check route and an adequate middleware pipeline.
   - [x] Create a `utils` directory
     - [x] In the `utils` directory, create an `errors.js` file.
@@ -470,7 +470,7 @@ Here are the pieces of functionality that should be built out for the backend:
           - [ ] Actions that should occur after all tests in a particular file run.
           - [ ] This should include things like ending any open database client connections
   - [ ] Commit all work to `git`
-- [ ] **Authentication**
+- [x] **Authentication**
   - [ ] Go ahead and build out a full-fledged authentication flow using PostgreSQL, `bcrypt`, and JSON Web Tokens. For it all to work, we'll need a `User` model, a `security` middleware, some `tokens` utility functions, and the appropriate `auth` routes.
   - [ ] Add new directories for `models`, `routes`, and `middleware`
   - [ ] The **User** model
@@ -497,7 +497,7 @@ Here are the pieces of functionality that should be built out for the backend:
       - [ ] Import the `bcrypt` package, the `db` client, and the app `config`.
       - [ ] Implement the features outlined in the tests until they're all passing.
   - [ ] Commit all work to `git`
-  - [ ] The **tokens** utility functions
+  - [x] The **tokens** utility functions
     - [ ] In the `utils` directory, create two new files: `utils/tokens.js` and `utils/tokens.test.js`
       - [ ] At the bare minimum, two functions will be needed:
         - [ ] One that accepts a JSON payload as an argument and converts it into a JWT
@@ -533,7 +533,7 @@ Here are the pieces of functionality that should be built out for the backend:
       - [ ] Implement the features outlined in the tests until they're all passing
     - [ ] In the `app.js` file, add the `Authentication` header parsing middleware to the Express app's middleware pipeline
   - [ ] Commit all work to `git`
-  - [ ] The **/auth** routes
+  - [x] The **/auth** routes
     - [ ] In the `routes` directory, create two new files: `routes/auth.js` and `routes/auth.test.js`
       - [ ] A new Express router should be created. It should handle:
         - [ ] A `GET` request to the `/me` endpoint
@@ -572,7 +572,7 @@ Here are the pieces of functionality that should be built out for the backend:
   - [ ] There should now be a full-fledged authentication system in place!
 - [ ] **Resources and Permissions**
   - [ ] Next, implement the functionality to allow users to save instances of things they've drank/eaten, so that they can track their own nutrition data! Also make sure users can only access the data that they themselves have created. No other user should be able to see any data owned by another user!
-  - [ ] The **Nutrition** model
+  - [x] The **Nutrition** model
     - [ ] In the `models` directory, create two new files: `models/nutrition.js` and `models/nutrition.test.js`
       - [ ] The `Nutrition` model should have **at least** the following static methods:
         - [ ] `createNutrition`
@@ -619,7 +619,7 @@ Here are the pieces of functionality that should be built out for the backend:
     - [ ] In the `middleware/permissions.js` file:
       - [ ] Implement the features outlined in the tests until they're all passing
     - [ ] Commit all work to `git`
-  - [ ] The **/nutrition** routes
+  - [x] The **/nutrition** routes
     - [ ] In the `routes` directory, create two new files: `routes/nutrition.js` and `routes/nutrition.test.js`
       - [ ] A new Express router should be created that will be mounted at the `/nutrition` endpoint. It should handle:
         - [ ] `GET` requests to the `/` endpoint
