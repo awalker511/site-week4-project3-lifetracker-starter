@@ -54,8 +54,18 @@ router.post("/create", async (req, res, next) => {
 
 router.get("/", async (req, res) => {
   try {
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = validateToken(token);
+    res.locals.user = decodedToken;
+
+    console.log("RES.LOCALS.USER", res.locals.user);
+
     const { email } = res.locals.user;
+
+    console.log("nutrition get route");
+
     const nutritions = await Nutrition.fetch(email);
+    // console.log("nut get nut and email", nutritions, email);
     return res.status(200).json({ nutritions });
   } catch (error) {
     console.error(error);

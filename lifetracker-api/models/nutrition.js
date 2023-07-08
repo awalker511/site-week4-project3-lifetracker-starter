@@ -39,7 +39,7 @@ class Nutrition {
 
   // function that creates new nutritions
   static async create(email, data) {
-    console.log(data);
+    console.log("create", data);
     // check that all field keys and values exist
     const requiredFields = ["foodname", "category", "quantity", "calories"];
     const stringFields = ["foodname", "category"];
@@ -84,7 +84,7 @@ class Nutrition {
         Number(data.calories),
         data.image,
         email,
-        data.id,
+        data.user_id,
       ]
     );
 

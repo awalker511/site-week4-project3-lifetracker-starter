@@ -5,7 +5,7 @@ import "./Navbar.css";
 const Navbar = ({ loggedIn, setLoggedIn, appState }) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
-    // navigate("/");
+    //window.location.href("/");
     setLoggedIn(false);
   };
   // const navigate = useNavigate();

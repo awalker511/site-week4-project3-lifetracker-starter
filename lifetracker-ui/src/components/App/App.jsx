@@ -13,33 +13,6 @@ import NutritionPage from "../NutritionPage/NutritionPage";
 import NutritionForm from "../NutritionForm/NutritionForm";
 
 function App() {
-  //logout function
-  // const handleLogout = () => {
-  //   localStorage.removeItem("token");
-  //   setLoggedIn(false);
-  // };
-  //token authentication
-
-  const [id, setId] = useState(null);
-
-  useEffect(() => {
-    const checkLoggedIn = () => {
-      //check is user is logged in when user first accesses webpage
-      const token = localStorage.getItem("token");
-      if (token) {
-        //decodes the stored token
-        const decodedToken = jwtDecode(token);
-        setUserName(decodedToken.userName);
-        if (decodedToken.exp * 1000 > Date.now()) {
-          setLoggedIn(true);
-        } else {
-          //token has expired, log out the user
-          handleLogout();
-        }
-      }
-    };
-    checkLoggedIn();
-  }, []);
   //usestates
   const [userName, setUserName] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
@@ -50,6 +23,34 @@ function App() {
     exercise: "",
   });
   const [errors, setErrors] = useState("");
+
+  //logout function
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   setLoggedIn(false);
+  // };
+  //token authentication
+
+  const [id, setId] = useState(null);
+  const [nutritionData, setNutritionData] = useState("");
+  useEffect(() => {
+    const checkLoggedIn = () => {
+      //check is user is logged in when user first accesses webpage
+      const token = localStorage.getItem("token");
+      if (token) {
+        //decodes the stored token
+        const decodedToken = jwtDecode(token);
+        setAppState({ ...appState, user: decodedToken.email });
+        if (decodedToken.exp * 1000 > Date.now()) {
+          setLoggedIn(true);
+        } else {
+          //token has expired, log out the user
+          handleLogout();
+        }
+      }
+    };
+    checkLoggedIn();
+  }, []);
 
   return (
     <div className="app">
@@ -63,7 +64,10 @@ function App() {
             element={<LoginPage setAppState={setAppState} />}
           />
           <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/nutrition" element={<NutritionPage />} />
+          <Route
+            path="/nutrition"
+            element={<NutritionPage appState={appState} />}
+          />
           <Route path="/nutrition/create" element={<NutritionForm />} />
         </Routes>
       </BrowserRouter>

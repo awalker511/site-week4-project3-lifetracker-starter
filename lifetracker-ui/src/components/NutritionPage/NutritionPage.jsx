@@ -2,20 +2,46 @@ import React, { useEffect, useState } from "react";
 import "./NutritionPage.css";
 import NutritionForm from "../NutritionForm/NutritionForm";
 import { Link, useNavigate } from "react-router-dom";
+import NutritionCard from "../NutritionCard/NutritionCard";
+import axios from "axios";
 
-const NutritionPage = ({ appState, setAppState, loggedIn }) => {
+const NutritionPage = ({
+  appState,
+  setAppState,
+  loggedIn,
+  setNutritionData,
+  nutritionData,
+}) => {
   const [createNew, setCreateNew] = useState(false);
-
+  console.log("nut page", appState);
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
     setCreateNew(true);
     navigate("/nutrition/create");
   };
+  useEffect(() => {
+    const fetchNutritionData = async (user_email) => {
+      try {
+        const headers = {
+          "Content-Type": "application/json",
+        };
+        if (localStorage.getItem("token")) {
+          headers["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
+        }
 
-  // const res= await axios.get("http://localhost:3001/nutrition", {
-
-  // })
+        const response = await axios.get("http://localhost:3001/nutrition", {
+          headers: headers,
+        });
+        console.log("fetchNutData", response.data);
+        // setNutritionData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+      return nutritionData;
+    };
+    fetchNutritionData(appState.user);
+  }, []);
 
   return (
     <div className="nutrition-page">
@@ -28,6 +54,7 @@ const NutritionPage = ({ appState, setAppState, loggedIn }) => {
           </button>
           {createNew && <NutritionForm />}
           {/* </Link> */}
+          <NutritionCard />
         </div>
       ) : (
         <h1>Log in to view your data.</h1>
