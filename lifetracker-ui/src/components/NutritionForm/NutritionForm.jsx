@@ -28,7 +28,7 @@ const NutritionForm = ({ setAppState, appState }) => {
       headers["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
     }
     const res = await axios.post(
-      "http://localhost:3001/nutrition/create",
+      "https://lifetracker-api-lk2s.onrender.com//nutrition/create",
       {
         foodname: nutritionForm.foodname,
         category: nutritionForm.category,

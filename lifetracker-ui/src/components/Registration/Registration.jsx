@@ -34,14 +34,17 @@ const Registration = ({ setAppState }) => {
     }
 
     try {
-      const res = await axios.post("http://localhost:3001/auth/register", {
-        username: regForm.username,
-        first_name: regForm.firstname,
-        last_name: regForm.lastname,
-        email: regForm.email,
-        password: regForm.password,
-        confirmedPassword: regForm.confirmedPassword,
-      });
+      const res = await axios.post(
+        "https://lifetracker-api-lk2s.onrender.com/auth/register",
+        {
+          username: regForm.username,
+          first_name: regForm.firstname,
+          last_name: regForm.lastname,
+          email: regForm.email,
+          password: regForm.password,
+          confirmedPassword: regForm.confirmedPassword,
+        }
+      );
 
       if (res?.data?.user) {
         setAppState(res.data);

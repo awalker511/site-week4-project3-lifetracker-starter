@@ -30,7 +30,7 @@ const Login = ({ setAppState, setLoggedIn }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3001/auth/login",
+        "https://lifetracker-api-lk2s.onrender.com/auth/login",
         loginForm
       );
 
