@@ -1,37 +1,55 @@
 import React, { useState } from "react";
 import "./NutritionForm.css";
+import axios from "axios";
+import NutritionPage from "../NutritionPage/NutritionPage";
+import { Route, Link } from "react-router-dom";
 
-const NutritionForm = ({ setAppState }) => {
+const NutritionForm = ({ setAppState, appState }) => {
   const [errors, setErrors] = useState({});
   const [nutritionForm, setNutritionForm] = useState({
     foodname: "",
     category: "",
-    quantity: "",
+    quantity: "1",
     calories: "",
     pictureUrl: "",
   });
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-    if (!e.target.name) {
-      setErrors((e) => ({ ...e, nutritionForm: "Field is empty" }));
+    console.log("IN HANDLE SUBMIT");
+
+    // if (!e.target.name) {
+    //   setErrors((e) => ({ ...e, nutritionForm: "Field is empty" }));
+    // }
+
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    if (localStorage.getItem("token")) {
+      headers["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
     }
-    try {
-      const res = await axios.post(
-        "http://localhost:3001/nutrition/nutrition",
-        {
-          foodname: nutritionForm.foodname,
-          category: nutritionForm.category,
-          quantity: nutritionForm.quantity,
-          calories: nutritionForm.calories,
-          pictureUrl: nutritionForm.pictureUrl,
-        }
-      );
-      if (res) {
-        setAppState(res.data);
+    const res = await axios.post(
+      "http://localhost:3001/nutrition/create",
+      {
+        foodname: nutritionForm.foodname,
+        category: nutritionForm.category,
+        quantity: nutritionForm.quantity,
+        calories: nutritionForm.calories,
+        pictureUrl: nutritionForm.pictureUrl,
+        // user_id: 1,
+      },
+      {
+        headers: headers,
       }
-    } catch (error) {
-      console.error(error);
-    }
+    );
+
+    //setAppState({ ...appState, user: "user.id", nutrition: { nutritions } });
+    setNutritionForm({
+      foodname: "",
+      category: "",
+      quantity: "1",
+      calories: "",
+      pictureUrl: "",
+    });
   };
 
   const handleNutritionChange = (e) => {
@@ -55,11 +73,15 @@ const NutritionForm = ({ setAppState }) => {
 
         <label>Category</label>
         <br></br>
-        <select name="category">
+        <select
+          name="category"
+          onChange={handleNutritionChange}
+          value={nutritionForm.category}
+        >
           <option>Select a category</option>
-          <option>Snack</option>
-          <option>Beverage</option>
-          <option>Food</option>
+          <option value="snack">Snack</option>
+          <option value="beverage">Beverage</option>
+          <option value="food">Food</option>
         </select>
         <br></br>
 
@@ -71,6 +93,7 @@ const NutritionForm = ({ setAppState }) => {
               className="nutrition-input"
               type="number"
               name="quantity"
+              value={nutritionForm.quantity}
               min={0}
               max={100}
               onChange={handleNutritionChange}
@@ -84,9 +107,11 @@ const NutritionForm = ({ setAppState }) => {
               className="nutrition-input"
               type="number"
               name="calories"
+              value={nutritionForm.calories}
               min={0}
               max={5000}
               step={10}
+              onChange={handleNutritionChange}
             ></input>
           </div>
           <br></br>
@@ -103,9 +128,11 @@ const NutritionForm = ({ setAppState }) => {
         ></input>
         <br></br>
         <br></br>
+        {/* <Link to="/nutrition"> */}
         <button className="save-button" type="submit">
           Save
         </button>
+        {/* </Link> */}
       </form>
     </div>
   );

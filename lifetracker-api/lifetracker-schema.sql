@@ -17,6 +17,7 @@ CREATE TABLE nutrition (
     calories TEXT NOT NULL,
     image_url TEXT,
     user_email TEXT NOT NULL,
-    created_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    user_id INTEGER REFERENCES users(id),
     FOREIGN KEY (user_email) REFERENCES users(email)
 );

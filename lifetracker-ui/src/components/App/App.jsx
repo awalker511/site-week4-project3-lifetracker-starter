@@ -19,6 +19,9 @@ function App() {
   //   setLoggedIn(false);
   // };
   //token authentication
+
+  const [id, setId] = useState(null);
+
   useEffect(() => {
     const checkLoggedIn = () => {
       //check is user is logged in when user first accesses webpage
@@ -50,7 +53,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar />
+      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

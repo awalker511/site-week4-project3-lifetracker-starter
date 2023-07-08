@@ -39,9 +39,10 @@ class Nutrition {
 
   // function that creates new nutritions
   static async create(email, data) {
+    console.log(data);
     // check that all field keys and values exist
-    const requiredFields = ["name", "category", "quantity", "calories"];
-    const stringFields = ["name", "category"];
+    const requiredFields = ["foodname", "category", "quantity", "calories"];
+    const stringFields = ["foodname", "category"];
     requiredFields.forEach((field) => {
       if (!data.hasOwnProperty(field)) {
         throw new BadRequestError(`Missing ${field}!`);
@@ -71,17 +72,19 @@ class Nutrition {
                 quantity,
                 calories,
                 image_url,
-                user_email
+                user_email,
+                user_id
             )
-            VALUES ($1,$2,$3,$4,$5,$6)
-            RETURNING id, name, category, quantity, calories, image_url, user_email;`,
+            VALUES ($1,$2,$3,$4,$5,$6,$7)
+            RETURNING id, name, category, quantity, calories, image_url, user_email, user_id ;`,
       [
-        data.name,
+        data.foodname,
         data.category,
         Number(data.quantity),
         Number(data.calories),
         data.image,
         email,
+        data.id,
       ]
     );
 

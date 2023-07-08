@@ -1,0 +1,74 @@
+.add-fitness-btn {
+  background-color: #4d4df6;
+  font-size: larger;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+.log-sleep-btn {
+  background-color: #966abf;
+  font-size: larger;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+.record-nutrition-btn {
+  background-color: #ffc400;
+  font-size: larger;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+.activity-feed h2 {
+  font-size: xx-large;
+  font-weight: bold;
+}
+.total-exercise {
+  padding: 50px;
+  background-color: #4d4df6;
+  height: 60px;
+  width: 20%;
+  border-radius: 10px;
+  color: white;
+}
+.total-sleep {
+  padding: 50px;
+  height: 200px;
+  background-color: #966abf;
+  height: 60px;
+  width: 20%;
+  border-radius: 10px;
+  color: white;
+}
+.total-nutrition {
+  padding: 50px;
+  background-color: #ffc400;
+  height: 60px;
+  width: 20%;
+  border-radius: 10px;
+  color: white;
+}
+.row-1 {
+  display: flex;
+
+  justify-content: space-around;
+}
+.activity-buttons {
+  display: flex;
+  flex-direction: row;
+  float: right;
+  margin-right: 200px;
+}
+.activity-buttons button {
+  margin: 10px;
+  padding: 10px;
+}
+.activity-page h1 {
+  font-size: xxx-large;
+}
+.activity-page h3 {
+  font-weight: bold;
+}

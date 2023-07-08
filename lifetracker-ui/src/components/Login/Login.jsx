@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setAppState }) => {
+const Login = ({ setAppState, setLoggedIn }) => {
   const [errors, setErrors] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState("");
@@ -33,6 +33,7 @@ const Login = ({ setAppState }) => {
         "http://localhost:3001/auth/login",
         loginForm
       );
+
       if (res?.data) {
         setAppState(res.data);
         setIsLoading(false);
@@ -41,9 +42,10 @@ const Login = ({ setAppState }) => {
       } else {
         setErrors((e) => ({
           ...e,
-          LoginForm: "Invalid username/password combination",
+          loginForm: "Invalid username/password combination",
         }));
         setIsLoading(false);
+        setLoggedIn(true);
       }
     } catch (err) {
       console.log(err);

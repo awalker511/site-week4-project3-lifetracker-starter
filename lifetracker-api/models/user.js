@@ -25,7 +25,13 @@ class User {
       token: user.token,
     };
   }
+  // static async displayNutr(userId) {
+  //   const query = `SELECT * FROM nutrition WHERE id= $1`;
 
+  //   const result = await pool.query(query, [userId]);
+  //   const nutrition = result.rows;
+  //   return nutrition;
+  // }
   static async authentication(credentials) {
     const { email, password } = credentials;
     const requiredCreds = ["username", "password"];

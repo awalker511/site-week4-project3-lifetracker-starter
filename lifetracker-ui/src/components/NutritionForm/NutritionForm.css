@@ -49,6 +49,10 @@ select {
   color: white;
   border-radius: 5px;
 }
+.save-button:hover {
+  background-color: #c0a600;
+}
+
 .page-title {
   text-align: center;
   font-size: xxx-large;

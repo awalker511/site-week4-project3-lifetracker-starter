@@ -1,30 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import RegistrationPage from "../RegistrationPage/RegistrationPage";
-import LoginPage from "../LoginPage/LoginPage";
-//import { Link } from "react-router-dom";
 
-import {
-  BrowserRouter,
-  Link,
-  Router,
-  Routes,
-  Route,
-  useParams,
-} from "react-router-dom";
-const Navbar = ({ loggedIn, setLoggedIn }) => {
+const Navbar = ({ loggedIn, setLoggedIn, appState }) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location("/");
+    // navigate("/");
     setLoggedIn(false);
   };
-  // const handleLogin = () => {
-  //   return <Link path="/login" element={<LoginPage />} />;
-  // };
-
-  // const handleRegistration = () => {
-  //   return <Link path="/register" element={<RegistrationPage />} />;
-  // };
+  // const navigate = useNavigate();
   return (
     <div className="navbar">
       <ul className="navbar-options">
@@ -54,7 +38,7 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
           </a>
         </li>
       </ul>
-      {loggedIn ? (
+      {localStorage.getItem("token") ? (
         <button className="logout-button" onClick={handleLogout}>
           Logout
         </button>

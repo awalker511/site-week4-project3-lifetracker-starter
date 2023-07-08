@@ -54,8 +54,16 @@
   font-size: medium;
   margin-right: 50px;
 }
-.login-button:hover {
+.login-button,
+.logout-button:hover {
   background-color: #c07d00;
+}
+.login-button {
+  background-color: transparent;
+}
+.logout-button {
+  padding: 5px;
+  width: 100px;
 }
 a {
   font-weight: bold;

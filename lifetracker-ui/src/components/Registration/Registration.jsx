@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Registration = ({}) => {
+const Registration = ({ setAppState }) => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [regForm, setRegForm] = useState({
@@ -17,8 +17,9 @@ const Registration = ({}) => {
   });
 
   //handlesubmit function for registration form
-  const handleOnSubmit = async () => {
+  const handleOnSubmit = async (event) => {
     //setIsLoading(true)
+    event.preventDefault();
     setErrors((e) => ({ ...e, form: null }));
 
     if (regForm.confirmedPassword !== regForm.password) {
@@ -35,8 +36,8 @@ const Registration = ({}) => {
     try {
       const res = await axios.post("http://localhost:3001/auth/register", {
         username: regForm.username,
-        firstname: regForm.firstname,
-        lastname: regForm.lastname,
+        first_name: regForm.firstname,
+        last_name: regForm.lastname,
         email: regForm.email,
         password: regForm.password,
         confirmedPassword: regForm.confirmedPassword,
@@ -45,7 +46,7 @@ const Registration = ({}) => {
       if (res?.data?.user) {
         setAppState(res.data);
         setIsLoading(false);
-        navigate("/activity");
+        navigate("/login");
       } else {
         setErrors((e) => ({
           ...e,

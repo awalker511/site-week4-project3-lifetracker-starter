@@ -28,9 +28,10 @@ const createUserJwt = (user) => {
 const validateToken = (token) => {
   try {
     const decoded = jwt.verify(token, SECRET_KEY);
+    console.log("validateToken decoded", decoded);
     return decoded;
   } catch (err) {
-    return {};
+    console.log("validateToken error", err);
   }
 };
 
