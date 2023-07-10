@@ -1,0 +1,7 @@
+.nutrition-card {
+  width: 30%;
+}
+.nutrtion-page {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
