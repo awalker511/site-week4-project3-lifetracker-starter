@@ -28,11 +28,13 @@ const Login = ({ setAppState, setLoggedIn }) => {
     setIsLoading(true);
     setErrors((e) => ({ ...e, form: null }));
 
+    console.log(loginForm);
     try {
       const res = await axios.post(
         "https://lifetracker-api-lk2s.onrender.com/auth/login",
         loginForm
       );
+      console.log(res);
 
       if (res?.data) {
         setAppState(res.data);

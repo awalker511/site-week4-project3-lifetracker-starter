@@ -8,11 +8,11 @@ const sqlScript = `CREATE TABLE IF NOT EXISTS users(id SERIAL PRIMARY KEY,
     password VARCHAR(255) NOT NULL)`;
 
 const pool = new Pool({
-  user: "postgres",
-  password: "postgres",
-  host: "localhost",
+  user: "lifetracker_db_6p29_user",
+  password: "lceEZDCh6wlfdteat0TM5OHoB4ej1a1P",
+  host: "dpg-cikd835ph6eg6kaqm57g-a",
   port: 5432,
-  database: "lifetracker",
+  database: "lifetracker_db_6p29",
 });
 
 //Execute the SQL script

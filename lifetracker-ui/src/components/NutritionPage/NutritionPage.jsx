@@ -20,7 +20,7 @@ const NutritionPage = ({
     setCreateNew(true);
     navigate("/nutrition/create");
   };
-  //fetching user nutrition data from db
+  //fetching user nutrition data from database
   useEffect(() => {
     const fetchNutritionData = async (user_email) => {
       try {
@@ -35,12 +35,11 @@ const NutritionPage = ({
           headers: headers,
         });
         console.log("fetchNutData", response.data);
-        //setNutritionData(response.data);
+
         setAppState({
           ...appState,
           nutrition: response.data.nutritions,
         });
-        // console.log("APPSTATE", appState);
       } catch (error) {
         console.error(error);
       }
@@ -57,7 +56,6 @@ const NutritionPage = ({
             Record Nutrition
           </button>
           {appState.nutrition?.map((foodItem, key) => {
-            console.log("e23");
             return <NutritionCard {...foodItem} key={foodItem.id} />;
           })}
         </div>
