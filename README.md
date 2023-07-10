@@ -1,5 +1,11 @@
 # Project #3: LifeTracker Application
 
+## Submission Video
+
+<a href="https://www.loom.com/share/d817f4f69d314790bea5f01808443793">
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/d817f4f69d314790bea5f01808443793-with-play.gif">
+  </a>
+
 ## Overview
 
 > Data is the new oil - Clive Humbly
